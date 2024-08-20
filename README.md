@@ -49,6 +49,8 @@ npm install
 ## Usage
 `/api-key set <key>`
 
+## Roadmap
+* [ ] To do
 ## License
 Distributed under the MIT License.
 <details>
