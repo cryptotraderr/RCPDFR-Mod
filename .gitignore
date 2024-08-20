@@ -3,6 +3,3 @@ node_modules/
 
 # Secrets
 *.env
-
-# Register
-register.js
