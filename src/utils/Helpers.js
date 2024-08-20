@@ -85,7 +85,8 @@ function convertDuration(duration) {
         const minutes = Math.floor(duration / 60);
         const seconds = duration % 60;
         let minString = `${minutes > 1 && 'minute(s)' || 'minute'}`;
-        return `${minutes}${minString} ${seconds} second(s)`;
+        let convertedSeconds = seconds !== 0 ? seconds + ` seconds(s)` : null
+        return `${minutes}${minString} ${convertedSeconds}`;
     } else if (duration === -1)  {
         return "Permanent";
     } else {

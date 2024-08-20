@@ -460,7 +460,7 @@ async function handleInteraction(interaction, settings, actionType) {
                     ${chosenReason ? `\n**📄 Reason:** ${chosenReason}` : null}
                     ${chosenDuration ? `\n**⏳ Duration:** ${chosenDuration}` : null}
                     ${displayReason ? `\n**📢 Display Reason:** ${displayReason}` : null}
-                    ${internalReason ? `\n**🔒 Internal Reason:** ${internalReason}` : null}`,
+                    ${internalReason !== displayReason ? `\n**🔒 Internal Reason:** ${internalReason}` : null}`,
                     WARN_COLOR
                 );                
 
