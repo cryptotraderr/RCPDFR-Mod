@@ -71,7 +71,7 @@ module.exports = {
             const record = await guildModel.findById(guildId);
             if (!record) console.error('Guild not found');
             const encodedKey = record.cloud.apiKey;
-            return decrypt(encodedKey);
+            return encodedKey;// decrypt(encodedKey);
         } catch (err) {
             console.error(err);
             return null;
@@ -88,7 +88,7 @@ module.exports = {
             );
             return result !== null;
         } catch (err) {
-            console.err(err);
+            console.error(err);
             return null;
         }
     },

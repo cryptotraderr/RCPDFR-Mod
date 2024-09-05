@@ -1,5 +1,5 @@
 const { EmbedBuilder, SlashCommandBuilder } = require('discord.js');
-const { getSettings, setApiKey } = require('../../schemas/guild');
+const { getSettings } = require('../../schemas/guild');
 
 const WARN_COLOR = '#eb4034';
 const CONSTRAST_SUCCESS = '#0099ff';
@@ -35,7 +35,9 @@ module.exports = {
 
         switch(sub) {
             case 'set':
-                await setApiKey(guildId, apiKey);
+                settings.cloud.apiKey = apiKey;
+                await settings.save();
+                // await setApiKey(guildId, apiKey);
                 selectedEmbed = new EmbedBuilder()
                     .setTitle('✔️ API Key Saved Successfully')
                     .addFields(
