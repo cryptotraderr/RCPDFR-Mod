@@ -1,6 +1,5 @@
 const { model, Schema } = require('mongoose');
 const FixedSizeMap = require('fixedsize-map');
-const { encrypt, decrypt } = require('../utils/Helpers');
 const cache = new FixedSizeMap(100);
 
 const guildSchema = new Schema({
@@ -78,7 +77,7 @@ module.exports = {
         }
     },
 
-    setApiKey: async (guildId, apiKey) => {
+    /*setApiKey: async (guildId, apiKey) => {
         try {
             const encryptedApiKey = encrypt(apiKey);
             const result = await guildModel.findOneAndUpdate(
@@ -91,7 +90,7 @@ module.exports = {
             console.error(err);
             return null;
         }
-    },
+    },*/
 
     addUniverse: async (guildId, universeName, universeId) => {
         const result = await guildModel.findOneAndUpdate(

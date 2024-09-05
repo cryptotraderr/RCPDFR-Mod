@@ -1,29 +1,4 @@
 const { EmbedBuilder } = require('discord.js');
-const crypto = require('crypto');
-
-require('dotenv/config');
-
-// Encryption settings
-const CRYPTO_ALGO = "aes-256-cbc";
-const CRYPTO_CIPHER_KEY = Buffer.from(process.env.ENCRYPTION_KEY, 'base64');
-
-const encrypt = (passedText) => {
-    const iv = crypto.randomBytes(16);
-    const cipher = crypto.createCipheriv(CRYPTO_ALGO, CRYPTO_CIPHER_KEY, iv);
-    let encrypted = cipher.update(passedText, 'utf8', 'base64');
-    encrypted += cipher.final('base64');
-    return iv.toString('base64') + ':' + encrypted;
-};
-
-const decrypt = (passedText) => {
-    const textParts = passedText.split(':');
-    const iv = Buffer.from(textParts.shift(), 'base64');
-    const encryptedText = Buffer.from(textParts.join(':'), 'base64');
-    const decipher = crypto.createDecipheriv(CRYPTO_ALGO, CRYPTO_CIPHER_KEY, iv);
-    let decrypted = decipher.update(encryptedText, 'base64', 'utf8');
-    decrypted += decipher.final('utf8');
-    return decrypted;
-};
 
 function createEmbed(title, description, color, thumbnail = '') {
     const embed = new EmbedBuilder()
@@ -197,4 +172,4 @@ async function handleReactionAsync(interaction, messageObj) {
     });
 }
 
-module.exports = { createSingleLogEmbed, convertDuration,  formatBanDuration, handleConfirmation, createEmbed, createFieldEmbed, decrypt, encrypt, handleReactionAsync }
+module.exports = { createSingleLogEmbed, convertDuration,  formatBanDuration, handleConfirmation, createEmbed, createFieldEmbed, handleReactionAsync }
